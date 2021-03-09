@@ -1,13 +1,12 @@
-import supertest from 'supertest'
 
 describe('Beach forecast functional test', () => {
-  it('should return a forecast with just a few times', async() => {
-    const { body, status } = await supertest(app).get('/forecast');
+  it('should return a forecast with just a few times', async () => {
+    const { body, status } = await global.testRequest.get('/forecast');
     expect(status).toBe(200)
-    expect(body).toBe([{
+    expect(body).toEqual([{
       "time": "2020-04-26T00:00:00+00:00",
       "forecast": [{
-        "lat":  -33.792726,
+        "lat": -33.792726,
         "lng": 151.289824,
         "name": "Manly",
         "position": "E",
@@ -18,12 +17,12 @@ describe('Beach forecast functional test', () => {
         "time": "2020-04-26T00:00:00+00:00",
         "waveDirection": 231.38,
         "waveHeight": 0.47,
-        "windDirection": 299.45 
+        "windDirection": 299.45
       }]
     }, {
       "time": "2020-04-26T01:00:00+00:00",
       "forecast": [{
-        "lat":  -33.792726,
+        "lat": -33.792726,
         "lng": 151.289824,
         "name": "Manly",
         "position": "E",
@@ -34,7 +33,7 @@ describe('Beach forecast functional test', () => {
         "time": "2020-04-26T00:00:00+00:00",
         "waveDirection": 232.12,
         "waveHeight": 0.46,
-        "windDirection": 310.48 
+        "windDirection": 310.48
       }]
     }])
   })
